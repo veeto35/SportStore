@@ -8,13 +8,14 @@ import { CheckoutComponent } from './store/checkout.component';
 import { StoreComponent } from './store/store.component';
 import { CartDetailComponent } from './store/cartDetail.component';
 import { StoreFirstGuard } from './storeFirst.guard';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule, StoreModule, RouterModule.forRoot([
+    BrowserModule, StoreModule,FormsModule, RouterModule.forRoot([
        { path: 'store', component: StoreComponent,
       canActivate: [StoreFirstGuard]},
        { path: 'cart', component: CartDetailComponent,
@@ -24,7 +25,7 @@ import { StoreFirstGuard } from './storeFirst.guard';
        { path: '**', redirectTo: "/store"}
     ])
   ],
-  providers: [],
+  providers: [ StoreFirstGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

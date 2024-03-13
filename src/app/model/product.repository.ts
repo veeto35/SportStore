@@ -8,7 +8,7 @@ export class ProductRepository {
     private categories: string[] = [];
 
     constructor(private dataSource: StaticDataSource) {
-        dataSource.getProdcuts().subscribe(data => {
+        dataSource.getProducts().subscribe(data => {
             this.products = data;
             this.categories = data.map(p => p.category ?? "(None)").filter((c,index,array) => array.indexOf(c) == index).sort();
         });

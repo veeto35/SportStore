@@ -1,9 +1,17 @@
 import { Component, Type } from "@angular/core";
+import { AuthService } from "../model/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
     templateUrl: 'admin.component.html'
 })
 
 export class AdminComponent {
-    static canActivate: Type<any> | undefined;
+    
+    constructor(private auth: AuthService, private router: Router) {}
+    
+    logout() {
+        this.auth.clear();
+        this.router.navigateByUrl("/");
+    }
 }

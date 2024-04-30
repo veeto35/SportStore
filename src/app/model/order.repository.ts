@@ -18,7 +18,7 @@ export class OrderRepository {
     }
     
     getOrders(): Order[] {
-        if (this.loaded) {
+        if (!this.loaded) {
             this.loadOrders();
         }
         return this.orders;
